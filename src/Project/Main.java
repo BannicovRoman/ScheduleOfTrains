@@ -30,14 +30,14 @@ public class Main {
         controllerSchedule.updateViewSchedule();
         controllerStation.updateViewStation();
 
-        System.out.println();
+       // System.out.println();
 
-        /*modelTrain.setNumber(199);
-        modelTrain.setDrivingMode("Work days");
-        modelStation.setStartStation("Volgograd");
-        modelStation.setFinishStation("Kazan");
-        modelSchedule.setTimeDeparture("10:00");
-        modelSchedule.setTimeArrival("19:15");
+       /* controllerTrain.setTrainNumber(199);
+        controllerTrain.setTrainMode("Work days");
+        controllerStation.setStStation("Volgograd");
+        controllerStation.setFinStation("Rostov");
+        controllerSchedule.setDeparture("20:10");
+        controllerSchedule.setArrival("08:15");
         controllerTrain.updateViewTrain();
         controllerSchedule.updateViewSchedule();
         controllerStation.updateViewStation(); */
