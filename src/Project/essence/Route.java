@@ -1,12 +1,15 @@
 package Project.essence;
 
-import java.util.Map;
-
 public class Route {
 
-    public Station startStation;
-    public Station finishStation;
-    Map<Integer,String> betweenStation;
+    private Station startStation;
+    private Station finishStation;
+
+
+    public Route(Station startStation, Station finishStation) {
+        this.startStation = startStation;
+        this.finishStation = finishStation;
+    }
 
     public Station getStartStation() {
         return startStation;
@@ -23,12 +26,6 @@ public class Route {
     public void setFinishStation(Station finishStation) {
         this.finishStation = finishStation;
     }
-
-    public Map<Integer, String> getBetweenStation() {
-        return betweenStation;
-    }
-
-    public void setBetweenStation(Map<Integer, String> betweenStation) {
-        this.betweenStation = betweenStation;
-    }
 }
+
+

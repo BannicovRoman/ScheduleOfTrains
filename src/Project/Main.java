@@ -1,69 +1,38 @@
 package Project;
 
-
-import Project.controller.ScheduleController;
-import Project.controller.StationController;
-import Project.controller.TrainController;
-import Project.essence.Schedule;
-import Project.essence.Station;
-import Project.essence.Train;
-import Project.view.ScheduleView;
-import Project.view.StationView;
-import Project.view.TrainView;
+import Project.DAO.RouteDAO;
+import Project.controller.RouteController;
+import Project.essence.Route;
 
 public class Main {
     public static void main(String[] args) {
 
-        Train modelTrain = retrieveTrain();
-        Schedule modelSchedule = retrieveSchedule();
-        Station modelStation = retrieveStation();
+       // TrainController train = new TrainDAO();
+        RouteController route = new RouteDAO();
+       // StationController station = new StationDAO();
 
-        TrainView viewTrain = new TrainView();
-        ScheduleView viewSchedule = new ScheduleView();
-        StationView viewStation = new StationView();
+       /* for (Station st : station.printStations()) { //выводим весь список станций
+            System.out.println(st.getName());
+            }
 
-        TrainController controllerTrain = new TrainController(modelTrain, viewTrain);
-        ScheduleController controllerSchedule = new ScheduleController(modelSchedule, viewSchedule);
-        StationController controllerStation = new StationController(modelStation, viewStation);
+        System.out.println();
+        System.out.println(station.getStation(1)); //выводи станцию по номеру
+        */
 
-        controllerTrain.updateViewTrain();
-        controllerSchedule.updateViewSchedule();
-        controllerStation.updateViewStation();
+       /*for (Train tr : train.printTrains()) { //выводим весь список поездов
+            System.out.println(tr.getName());
+            }
+        System.out.println();
+        System.out.println(train.getTrain(1)); //выводим название поезда по номеру
+        System.out.println();
 
-       // System.out.println();
+        Train up = train.printTrains().get(2); //обновляем название поезда по номеру
+        up.setName("VIP train");
+        train.updateTrain(up);*/
 
-       /* controllerTrain.setTrainNumber(199);
-        controllerTrain.setTrainMode("Work days");
-        controllerStation.setStStation("Volgograd");
-        controllerStation.setFinStation("Rostov");
-        controllerSchedule.setDeparture("20:10");
-        controllerSchedule.setArrival("08:15");
-        controllerTrain.updateViewTrain();
-        controllerSchedule.updateViewSchedule();
-        controllerStation.updateViewStation(); */
-    }
 
-    private  static Train retrieveTrain() {
-
-        Train train = new Train();
-        train.setNumber(153);
-        train.setDrivingMode("Weekends");
-        return train;
-    }
-
-    private static Schedule retrieveSchedule(){
-
-        Schedule schedule = new Schedule();
-        schedule.setTimeDeparture("12:00");
-        schedule.setTimeArrival("18:30");
-        return schedule;
-    }
-
-    private static Station retrieveStation(){
-
-        Station station = new Station();
-        station.setStartStation("Saratov");
-        station.setFinishStation("Moscow");
-        return station;
+        for (Route r : route.printRoutes()) {
+            System.out.println(r);
+        }
     }
 }

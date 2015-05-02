@@ -3,7 +3,6 @@ package Project.essence;
 public class Schedule {
     private String timeDeparture;
     private String timeArrival;
-    //public int timeWay;
 
     public String getTimeDeparture() {
 
@@ -24,12 +23,4 @@ public class Schedule {
 
         this.timeArrival = timeArrival;
     }
-
-    //public int getTimeWay() {
-      //  return timeWay;
-    //}
-
-    //public void setTimeWay(int timeWay) {
-      //  this.timeWay = timeWay;
-    //}
 }

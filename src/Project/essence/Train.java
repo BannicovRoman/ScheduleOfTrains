@@ -1,22 +1,27 @@
 package Project.essence;
 
 public class Train {
-    private int num;
-    private String drivingMode;
+    private int number;
+    private String name;
+
+    public Train(String name, int number) {
+        this.number = number;
+        this.name = name;
+    }
 
     public int getNumber() {
-        return num;
+        return number;
     }
 
-    public void setNumber(int num) {
-        this.num = num;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    public String getDrivingMode() {
-        return drivingMode;
+    public String getName() {
+        return name;
     }
 
-    public void setDrivingMode(String drivingMode) {
-        this.drivingMode = drivingMode;
+    public void setName(String name) {
+        this.name = name;
     }
 }

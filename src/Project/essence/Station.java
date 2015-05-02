@@ -1,16 +1,27 @@
 package Project.essence;
 
 public class Station {
-    private String startStation;
-    private String finishStation;
+    private int id;
+    private String name;
 
-    public String getStartStation() {
-        return startStation;
+    public Station(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public void setStartStation(String startStation) { this.startStation = startStation; }
+    public int getId() {
+        return id;
+    }
 
-    public String getFinishStation() { return finishStation; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public void setFinishStation(String finishStation) { this.finishStation = finishStation; }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
