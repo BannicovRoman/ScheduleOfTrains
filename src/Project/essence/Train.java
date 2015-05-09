@@ -1,20 +1,15 @@
 package Project.essence;
 
 public class Train {
-    private int number;
+    private int id;
     private String name;
 
-    public Train(String name, int number) {
-        this.number = number;
-        this.name = name;
+    public Integer getId() {
+        return id;
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -23,5 +18,21 @@ public class Train {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Train train = (Train) obj;
+        if (name == null) {
+            if (train.name != null)
+                return false;
+        } else if (!name.equals(train.name))
+            return false;
+        return true;
     }
 }

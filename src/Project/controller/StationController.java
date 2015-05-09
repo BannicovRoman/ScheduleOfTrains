@@ -1,13 +1,38 @@
 package Project.controller;
 
 import Project.essence.Station;
+import Project.view.StationView;
 
-import java.util.List;
+public class StationController {
+    private Station modelStation;
+    private StationView viewStation;
 
-public interface StationController {
+    public StationController(Station modelStation, StationView viewStation) {
+        this.modelStation = modelStation;
+        this.viewStation = viewStation;
+    }
 
-    public List<Station> printStations();
-    public String getStation(int id);
-    public void updateStation(Station station);
-    public void deleteStation(Station station);
+    public void setStationId(int id) {
+
+        modelStation.setId(id);
+    }
+
+    public int getStationId(){
+
+        return modelStation.getId();
+    }
+
+    public void setStationName(String name){
+
+        modelStation.setName(name);
+    }
+
+    public String getStationName(){
+
+        return modelStation.getName();
+    }
+    public void updateViewStation(){
+        viewStation.printStationId(modelStation.getId());
+        viewStation.printStationName(modelStation.getName());
+    }
 }
