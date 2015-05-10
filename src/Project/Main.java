@@ -7,8 +7,8 @@ public class Main {
     public static void main(String[] args) {
 
      JsonTrain jsonTrain = new JsonTrain();
-     jsonTrain.createTrain();
-
-     //jsonTrain.delete();
+     //jsonTrain.createTrain();
+     //System.out.println(jsonTrain.jsonToObject());
+       jsonTrain.delete();
     }
 }

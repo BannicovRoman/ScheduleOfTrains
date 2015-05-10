@@ -44,44 +44,52 @@ public class JsonTrain{
         }
     }
 
-    public void jsonToObject() {
+    public List<Train> jsonToObject() {
 
         Gson gson = new Gson();
+        List<Train> trainList = new ArrayList<>();
 
         try {
 
             BufferedReader br = new BufferedReader(new FileReader("trains.json"));
 
-            List<Train> trainList = gson.fromJson(br, List.class);
+            trainList = gson.fromJson(br, List.class);
 
            // System.out.println(trainList);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return trainList;
     }
 
     public void createTrain(){
 
-        Scanner sc = new Scanner(System.in);
-        int id;
+        Scanner sc1 = new Scanner(System.in);
+        int n = 0;
         String name;
-        Train train = new Train();
+        int id;
         List<Train> trainList = new ArrayList<>();
 
-        System.out.println("Enter the name of train number:");
-        name = sc.nextLine();
-        System.out.println("Enter the number of train:");
-        id = sc.nextInt();
+        System.out.println("Enter number of trains: ");
+        n = sc1.nextInt();
 
-        train.setId(id);
-        train.setName(name);
+        Scanner sc2 = new Scanner(System.in);
+        Scanner sc3 = new Scanner(System.in);
+        for(int i = 0; i < n; i++) {
+            System.out.println("Enter the name of train: ");
+            name = sc2.nextLine();
+            System.out.println("Enter the number of train: ");
+            id = sc3.nextInt();
 
-        trainList.add(train);
+            Train train = new Train();
+            train.setId(id);
+            train.setName(name);
 
+            trainList.add(train);
+        }
         JsonTrain jsonTrain = new JsonTrain();
         jsonTrain.objectToJson(trainList);
-
     }
 
     public void search(){
@@ -95,18 +103,39 @@ public class JsonTrain{
     public void delete(){
 
         Scanner sc = new Scanner(System.in);
-        String name;
-        Train train = new Train();
+        String nameDelete;
+        Gson gson = new Gson();
         List<Train> trainList = new ArrayList<>();
 
-        JsonTrain jsonTrain = new JsonTrain();
-        jsonTrain.jsonToObject();
+        try {
 
-        System.out.println("Enter the name of the train to be deleted");
-        name = sc.nextLine();
+            BufferedReader br = new BufferedReader(new FileReader("trains.json"));
+
+            trainList = gson.fromJson(br, List.class);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(trainList);
+
+        System.out.println();
+
+        System.out.println("Enter the name of the train to be deleted: ");
+        nameDelete = sc.nextLine();
 
 
-        jsonTrain.objectToJson(trainList);
+        for(Train tr : trainList ){
+            if(tr.getName().equals(nameDelete)){  //ClassCastException: com.google.gson.internal.LinkedTreeMap cannot be cast to Project.essence.Train
+               trainList.remove(tr);
+            }
+            else{
+                System.out.println("This train does not exist!");
+            }
+        }
+
+        System.out.println(trainList);
+
+        //jsonTrain.objectToJson(???);
     }
 
 }
