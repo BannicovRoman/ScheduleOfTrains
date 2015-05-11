@@ -4,10 +4,10 @@ package Project.JSON;
 import Project.essence.Train;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -49,11 +49,13 @@ public class JsonTrain{
 
         Gson gson = new Gson();
         List<Train> trainList = new ArrayList<>();
+        //JsonArray  jsonArray = new JsonArray();
 
         try {
 
             BufferedReader br = new BufferedReader(new FileReader("trains.json"));
 
+            //jsonArray = gson.fromJson(br, JsonArray.class);
             trainList = gson.fromJson(br, List.class);
 
            // System.out.println(trainList);
@@ -71,6 +73,7 @@ public class JsonTrain{
         String name;
         //int id;
         List<Train> trainList = new ArrayList<>();
+        //JsonArray jsonArray = new JsonArray();
 
         System.out.println("Enter number of trains: ");
         n = sc1.nextInt();
@@ -98,37 +101,35 @@ public class JsonTrain{
         Scanner sc = new Scanner(System.in);
         String nameDelete;
         Gson gson = new Gson();
-        List<Train> trainList = new ArrayList<>();
-        Train train = new Train();
+        //List<Train> trainList = new ArrayList<>();
+        JsonArray  jsonArray = new JsonArray();
+        //JsonObject jsonObject = new JsonObject();
+        //Train train = new Train();
 
         try {
 
             BufferedReader br = new BufferedReader(new FileReader("trains.json"));
 
-            trainList = gson.fromJson(br, List.class);
+            jsonArray = gson.fromJson(br, JsonArray.class);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(trainList);
+        System.out.println(jsonArray);
+
+        System.out.println();
 
         System.out.println("Enter the name of the train to be deleted: ");
         nameDelete = sc.nextLine();
 
+        for(int i = 0; i < jsonArray.size(); i++){
+            String name = jsonArray.get(i).getAsJsonObject().get("name").getAsString();
+            if(name.equals(nameDelete)){
+                System.out.println("Can delete");
 
-        Iterator<Train> iter = trainList.iterator(); //вариант 2
-        while (iter.hasNext()) {
-            System.out.println(iter.next());
+            }
+
+
         }
-
-            //вариан 1
-       /* for(Train tr : trainList){   //ClassCastException: com.google.gson.internal.LinkedTreeMap cannot be cast to Project.essence.Train
-            if(tr.equals(nameDelete)){
-                trainList.remove();
-            }
-            else{
-                System.out.println("This train does not exist!");
-            }
-        }*/
     }
 }
