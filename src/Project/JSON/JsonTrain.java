@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -68,22 +69,22 @@ public class JsonTrain{
         Scanner sc1 = new Scanner(System.in);
         int n = 0;
         String name;
-        int id;
+        //int id;
         List<Train> trainList = new ArrayList<>();
 
         System.out.println("Enter number of trains: ");
         n = sc1.nextInt();
 
         Scanner sc2 = new Scanner(System.in);
-        Scanner sc3 = new Scanner(System.in);
+        //Scanner sc3 = new Scanner(System.in);
         for(int i = 0; i < n; i++) {
             System.out.println("Enter the name of train: ");
             name = sc2.nextLine();
-            System.out.println("Enter the number of train: ");
-            id = sc3.nextInt();
+            //System.out.println("Enter the number of train: ");
+            //id = sc3.nextInt();
 
             Train train = new Train();
-            train.setId(id);
+            train.setId(i);
             train.setName(name);
 
             trainList.add(train);
@@ -92,20 +93,13 @@ public class JsonTrain{
         jsonTrain.objectToJson(trainList);
     }
 
-    public void search(){
-
-        Scanner sc = new Scanner(System.in);
-        String name;
-
-
-    }
-
     public void delete(){
 
         Scanner sc = new Scanner(System.in);
         String nameDelete;
         Gson gson = new Gson();
         List<Train> trainList = new ArrayList<>();
+        Train train = new Train();
 
         try {
 
@@ -118,24 +112,23 @@ public class JsonTrain{
         }
         System.out.println(trainList);
 
-        System.out.println();
-
         System.out.println("Enter the name of the train to be deleted: ");
         nameDelete = sc.nextLine();
 
 
-        for(Train tr : trainList ){
-            if(tr.getName().equals(nameDelete)){  //ClassCastException: com.google.gson.internal.LinkedTreeMap cannot be cast to Project.essence.Train
-               trainList.remove(tr);
+        Iterator<Train> iter = trainList.iterator(); //вариант 2
+        while (iter.hasNext()) {
+            System.out.println(iter.next());
+        }
+
+            //вариан 1
+       /* for(Train tr : trainList){   //ClassCastException: com.google.gson.internal.LinkedTreeMap cannot be cast to Project.essence.Train
+            if(tr.equals(nameDelete)){
+                trainList.remove();
             }
             else{
                 System.out.println("This train does not exist!");
             }
-        }
-
-        System.out.println(trainList);
-
-        //jsonTrain.objectToJson(???);
+        }*/
     }
-
 }

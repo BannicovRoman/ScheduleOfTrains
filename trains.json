@@ -1,10 +1,14 @@
 [
   {
-    "id": 23,
+    "id": 0,
     "name": "Local"
   },
   {
-    "id": 45,
+    "id": 1,
     "name": "Fast"
+  },
+  {
+    "id": 2,
+    "name": "Freight"
   }
 ]

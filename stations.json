@@ -1,14 +1,18 @@
 [
   {
     "id": 0,
-    "name": "Reznay"
-  },
-  {
-    "id": 1,
     "name": "Novay"
   },
   {
-    "id": 2,
+    "id": 1,
     "name": "Sokolovay"
+  },
+  {
+    "id": 2,
+    "name": "Reznay"
+  },
+  {
+    "id": 3,
+    "name": "Gorodskay"
   }
 ]

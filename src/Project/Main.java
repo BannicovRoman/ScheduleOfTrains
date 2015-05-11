@@ -8,7 +8,10 @@ public class Main {
 
      JsonTrain jsonTrain = new JsonTrain();
      //jsonTrain.createTrain();
-     //System.out.println(jsonTrain.jsonToObject());
-       jsonTrain.delete();
+
+     jsonTrain.delete();
+
+     //JsonStation jsonStation = new JsonStation();
+     //jsonStation.createStation();
     }
 }

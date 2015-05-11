@@ -5,27 +5,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class JsonStation {
 
     public void objectToJson(List<Station> stationList) {
-
-        Station station1 = new Station();
-        station1.setId(0);
-        station1.setName("Reznay");
-
-        Station station2 = new Station();
-        station2.setId(1);
-        station2.setName("Novay");
-
-        Station station3 = new Station();
-        station3.setId(2);
-        station3.setName("Sokolovay");
-
-        stationList.add(station1);
-        stationList.add(station2);
-        stationList.add(station3);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -57,23 +43,52 @@ public class JsonStation {
         }
     }
 
-    public void jsonToObject() {
+    public List<Station> jsonToObject() {
 
         Gson gson = new Gson();
+        List<Station> stationList = new ArrayList<>();
 
         try {
 
             BufferedReader br = new BufferedReader(new FileReader("stations.json"));
 
-            List<Station> stationList = gson.fromJson(br, List.class);
+            stationList = gson.fromJson(br, List.class);
 
             System.out.println(stationList);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return stationList;
+    }
 
+    public void createStation(){
 
+        Scanner sc1 = new Scanner(System.in);
+        int n = 0;
+        String name;
+        //int id;
+        List<Station> stationList = new ArrayList<>();
+
+        System.out.println("Enter number of stations: ");
+        n = sc1.nextInt();
+
+        Scanner sc2 = new Scanner(System.in);
+        //Scanner sc3 = new Scanner(System.in);
+        for(int i = 0; i < n; i++) {
+            System.out.println("Enter the name of station: ");
+            name = sc2.nextLine();
+           // System.out.println("Enter the number of station: ");
+           // id = sc3.nextInt();
+
+            Station station = new Station();
+            station.setId(i);
+            station.setName(name);
+
+            stationList.add(station);
+        }
+        JsonStation jsonStation = new JsonStation();
+        jsonStation.objectToJson(stationList);
     }
 
 }
