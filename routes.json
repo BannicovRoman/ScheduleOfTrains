@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1.0,
+    "train": {
+      "id": 456.0,
+      "name": "Fast",
+      "machinist": "Kozlov Andrey",
+      "numberOfCoach": 11.0
+    },
+    "startStation": {
+      "id": 3.0,
+      "name": "Rechnay",
+      "timeParking": "45 min"
+    },
+    "finishStation": {
+      "id": 8.0,
+      "name": "Sokolovay",
+      "timeParking": "25 min"
+    },
+    "timeOut": "11:00",
+    "timeIn": "22:00"
+  },
+  {
+    "id": 2.0,
+    "train": {
+      "id": 987.0,
+      "name": "Freight",
+      "machinist": "Orlov Anton",
+      "numberOfCoach": 35.0
+    },
+    "startStation": {
+      "id": 3.0,
+      "name": "Rechnay",
+      "timeParking": "45 min"
+    },
+    "finishStation": {
+      "id": 11.0,
+      "name": "Novay",
+      "timeParking": "15 min"
+    },
+    "timeOut": "19:00",
+    "timeIn": "06:00"
+  },
+  {
+    "id": 3,
+    "train": {
+      "id": 123,
+      "name": "Local",
+      "machinist": "Petrov Dmitriy",
+      "numberOfCoach": 14
+    },
+    "startStation": {
+      "id": 8,
+      "name": "Sokolovay",
+      "timeParking": "25 min"
+    },
+    "finishStation": {
+      "id": 11,
+      "name": "Novay",
+      "timeParking": "15 min"
+    },
+    "timeOut": "10:00",
+    "timeIn": "20:00"
+  }
+]
