@@ -3,6 +3,34 @@ package Project.essence;
 public class Train {
     private int id;
     private String name;
+    private String machinist;
+    private int numberOfCoach;
+
+    public Train() {
+    }
+
+    public Train(int id, String name, String machinist, int numberOfCoach) {
+        this.id = id;
+        this.name = name;
+        this.machinist = machinist;
+        this.numberOfCoach = numberOfCoach;
+    }
+
+    public String getMachinist() {
+        return machinist;
+    }
+
+    public void setMachinist(String machinist) {
+        this.machinist = machinist;
+    }
+
+    public int getNumberOfCoach() {
+        return numberOfCoach;
+    }
+
+    public void setNumberOfCoach(int numberOfCoach) {
+        this.numberOfCoach = numberOfCoach;
+    }
 
     public Integer getId() {
         return id;

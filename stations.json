@@ -1,18 +1,17 @@
 [
   {
-    "id": 0,
-    "name": "Novay"
+    "id": 8.0,
+    "name": "Sokolovay",
+    "timeParking": "25 min"
   },
   {
-    "id": 1,
-    "name": "Sokolovay"
+    "id": 3.0,
+    "name": "Rechnay",
+    "timeParking": "45 min"
   },
   {
-    "id": 2,
-    "name": "Reznay"
-  },
-  {
-    "id": 3,
-    "name": "Gorodskay"
+    "id": 11,
+    "name": "Novay",
+    "timeParking": "15 min"
   }
 ]

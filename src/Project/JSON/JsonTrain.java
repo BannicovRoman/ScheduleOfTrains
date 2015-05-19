@@ -7,9 +7,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class JsonTrain{
 
@@ -48,7 +46,7 @@ public class JsonTrain{
     public List<Train> jsonToObject() {
 
         Gson gson = new Gson();
-        List<Train> trainList = new ArrayList<>();
+        List<Train> trainList = new LinkedList<>();
         //JsonArray  jsonArray = new JsonArray();
 
         try {
@@ -66,29 +64,54 @@ public class JsonTrain{
         return trainList;
     }
 
-    public void createTrain(){
+   /* public LinkedList<Train> jsonToObject(){
+
+        Gson gson = new Gson();
+        LinkedList<Train> trainLinkedList = new LinkedList<>();
+
+        try{
+            BufferedReader br = new BufferedReader(new FileReader("trains.json"));
+
+            trainLinkedList = gson.fromJson(br, LinkedList.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return trainLinkedList;
+    }*/
+
+    public void createListTrain(){
 
         Scanner sc1 = new Scanner(System.in);
-        int n = 0;
+        int n;
+        int id;
         String name;
-        //int id;
-        List<Train> trainList = new ArrayList<>();
-        //JsonArray jsonArray = new JsonArray();
-
-        System.out.println("Enter number of trains: ");
-        n = sc1.nextInt();
+        String machinist;
+        int numberOfCoach;
+        List<Train> trainList = new LinkedList<>();
 
         Scanner sc2 = new Scanner(System.in);
-        //Scanner sc3 = new Scanner(System.in);
+        Scanner sc3 = new Scanner(System.in);
+        Scanner sc4 = new Scanner(System.in);
+        Scanner sc5 = new Scanner(System.in);
+
+        System.out.println("Введите количество поездов для создания: ");
+        n = sc1.nextInt();
+
         for(int i = 0; i < n; i++) {
-            System.out.println("Enter the name of train: ");
+            System.out.println("Введите номер поезда: ");
+            id = sc5.nextInt();
+            System.out.println("Введите название поезда: ");
             name = sc2.nextLine();
-            //System.out.println("Enter the number of train: ");
-            //id = sc3.nextInt();
+            System.out.println("Введите имя и фамилию машиниста: ");
+            machinist = sc3.nextLine();
+            System.out.println("Введите количество вагонов: ");
+            numberOfCoach = sc4.nextInt();
 
             Train train = new Train();
-            train.setId(i);
+            train.setId(id);
             train.setName(name);
+            train.setMachinist(machinist);
+            train.setNumberOfCoach(numberOfCoach);
 
             trainList.add(train);
         }
@@ -96,15 +119,12 @@ public class JsonTrain{
         jsonTrain.objectToJson(trainList);
     }
 
-    public void delete(){
+    public void search(){
 
         Scanner sc = new Scanner(System.in);
-        String nameDelete;
+        String name;
         Gson gson = new Gson();
-        //List<Train> trainList = new ArrayList<>();
         JsonArray  jsonArray = new JsonArray();
-        //JsonObject jsonObject = new JsonObject();
-        //Train train = new Train();
 
         try {
 
@@ -115,21 +135,114 @@ public class JsonTrain{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(jsonArray);
 
-        System.out.println();
+        System.out.println("Пожалуйста, введите название поезда:");
+        name = sc.nextLine();
 
-        System.out.println("Enter the name of the train to be deleted: ");
+        for(int i = 0; i < jsonArray.size(); i++) {
+            String n = jsonArray.get(i).getAsJsonObject().get("name").getAsString();
+            if (n.equals(name)) {
+                System.out.println(jsonArray.get(i).getAsJsonObject());
+            }
+        }
+    }
+
+    public void getAllTrains(){
+
+        Gson gson = new Gson();
+        JsonArray  jsonArray = new JsonArray();
+
+        try {
+
+            BufferedReader br = new BufferedReader(new FileReader("trains.json"));
+
+            jsonArray = gson.fromJson(br, JsonArray.class);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for(int i = 0; i < jsonArray.size(); i++) {
+            System.out.println(jsonArray.get(i).getAsJsonObject());
+        }
+    }
+
+    public void addTrain(){
+
+        Gson gson = new Gson();
+        List<Train> trainList = new LinkedList<>();
+
+        try {
+
+            BufferedReader br = new BufferedReader(new FileReader("trains.json"));
+
+            trainList = gson.fromJson(br, List.class);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        int id;
+        String name;
+        String machinist;
+        int numberOfCoach;
+
+        Scanner sc2 = new Scanner(System.in);
+        Scanner sc3 = new Scanner(System.in);
+        Scanner sc4 = new Scanner(System.in);
+        Scanner sc5 = new Scanner(System.in);
+
+        System.out.println("Введите номер поезда: ");
+        id = sc5.nextInt();
+        System.out.println("Введите название поезда: ");
+        name = sc2.nextLine();
+        System.out.println("Введите имя и фамилию машиниста: ");
+        machinist = sc3.nextLine();
+        System.out.println("Введите количество вагонов: ");
+        numberOfCoach = sc4.nextInt();
+
+        Train train = new Train();
+        train.setId(id);
+        train.setName(name);
+        train.setMachinist(machinist);
+        train.setNumberOfCoach(numberOfCoach);
+
+        trainList.add(train);
+
+        JsonTrain jsonTrain = new JsonTrain();
+        jsonTrain.objectToJson(trainList);
+    }
+
+    public void delete(){    // нужно доделать!
+
+        Scanner sc = new Scanner(System.in);
+        String nameDelete;
+        Gson gson = new Gson();
+        List<Train> trainList = new LinkedList<>();
+        //JsonArray  jsonArray = new JsonArray();
+        //JsonObject jsonObject = new JsonObject();
+        //Train train = new Train();
+
+        try {
+
+            BufferedReader br = new BufferedReader(new FileReader("trains.json"));
+
+            trainList = gson.fromJson(br, List.class);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Введите название поезда для удаления: ");
         nameDelete = sc.nextLine();
 
-        for(int i = 0; i < jsonArray.size(); i++){
-            String name = jsonArray.get(i).getAsJsonObject().get("name").getAsString();
+        for(int i = 0; i < trainList.size(); i++){
+            String name = trainList.get(i).getName();
             if(name.equals(nameDelete)){
-                System.out.println("Can delete");
-
+                trainList.remove(i);
             }
-
-
         }
+        JsonTrain jsonTrain = new JsonTrain();
+        jsonTrain.objectToJson(trainList);
     }
 }

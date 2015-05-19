@@ -1,17 +1,12 @@
 package Project;
 
 
-import Project.JSON.JsonTrain;
+import Project.view.View;
 
 public class Main {
     public static void main(String[] args) {
 
-     JsonTrain jsonTrain = new JsonTrain();
-     //jsonTrain.createTrain();
-
-     jsonTrain.delete();
-
-     //JsonStation jsonStation = new JsonStation();
-     //jsonStation.createStation();
+        View view = new View();
+        view.display();
     }
 }

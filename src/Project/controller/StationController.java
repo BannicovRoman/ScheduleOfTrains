@@ -1,38 +1,26 @@
 package Project.controller;
 
-import Project.essence.Station;
-import Project.view.StationView;
+import Project.JSON.JsonStation;
 
 public class StationController {
-    private Station modelStation;
-    private StationView viewStation;
 
-    public StationController(Station modelStation, StationView viewStation) {
-        this.modelStation = modelStation;
-        this.viewStation = viewStation;
+    public void createStations(){
+        JsonStation jsonStation = new JsonStation();
+        jsonStation.createListStations();
     }
 
-    public void setStationId(int id) {
-
-        modelStation.setId(id);
+    public void searchStation(){
+        JsonStation jsonStation = new JsonStation();
+        jsonStation.search();
     }
 
-    public int getStationId(){
-
-        return modelStation.getId();
+    public void getStations(){
+        JsonStation jsonStation = new JsonStation();
+        jsonStation.getAllStations();
     }
 
-    public void setStationName(String name){
-
-        modelStation.setName(name);
-    }
-
-    public String getStationName(){
-
-        return modelStation.getName();
-    }
-    public void updateViewStation(){
-        viewStation.printStationId(modelStation.getId());
-        viewStation.printStationName(modelStation.getName());
+    public void add(){
+        JsonStation jsonStation = new JsonStation();
+        jsonStation.addStation();
     }
 }
