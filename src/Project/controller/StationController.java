@@ -23,4 +23,9 @@ public class StationController {
         JsonStation jsonStation = new JsonStation();
         jsonStation.addStation();
     }
+
+    public  void delete(){
+        JsonStation jsonStation = new JsonStation();
+        jsonStation.deleteStation();
+    }
 }

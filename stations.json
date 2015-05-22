@@ -5,13 +5,13 @@
     "timeParking": "25 min"
   },
   {
-    "id": 3.0,
-    "name": "Rechnay",
-    "timeParking": "45 min"
+    "id": 11.0,
+    "name": "Novay",
+    "timeParking": "15 min"
   },
   {
-    "id": 11,
-    "name": "Novay",
+    "id": 45,
+    "name": "Rechnay",
     "timeParking": "15 min"
   }
 ]

@@ -18,4 +18,9 @@ public class RouteController {
         JsonRoute jsonRoute = new JsonRoute();
         jsonRoute.addRoute();
     }
+
+    public void delete(){
+        JsonRoute jsonRoute = new JsonRoute();
+        jsonRoute.deleteRoute();
+    }
 }

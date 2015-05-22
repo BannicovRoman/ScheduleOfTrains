@@ -1,20 +1,20 @@
 [
   {
-    "id": 123.0,
-    "name": "Local",
-    "machinist": "Petrov Dmitriy",
-    "numberOfCoach": 14.0
-  },
-  {
     "id": 456.0,
     "name": "Fast",
     "machinist": "Kozlov Andrey",
     "numberOfCoach": 11.0
   },
   {
-    "id": 987,
+    "id": 987.0,
     "name": "Freight",
     "machinist": "Orlov Anton",
-    "numberOfCoach": 35
+    "numberOfCoach": 35.0
+  },
+  {
+    "id": 953,
+    "name": "Local",
+    "machinist": "Sokolov Artur",
+    "numberOfCoach": 15
   }
 ]

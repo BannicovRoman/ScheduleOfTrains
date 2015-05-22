@@ -24,4 +24,9 @@ public class TrainController {
         jsonTrain.addTrain();
     }
 
+    public void delete(){
+        JsonTrain jsonTrain = new JsonTrain();
+        jsonTrain.deleteTrain();
+    }
+
 }

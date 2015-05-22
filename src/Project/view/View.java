@@ -73,6 +73,9 @@ public class View {
                     System.out.println("4. Добавить новый поезд.");
                     System.out.println("5. Добавить новую станцию.");
                     System.out.println("6. Добавить новый маршрут.");
+                    System.out.println("7. Удалить поезд.");
+                    System.out.println("8. Удалить станцию.");
+                    System.out.println("9. Удалить маршрут.");
                     p = sc3.nextInt();
 
                     switch (p) {
@@ -93,6 +96,15 @@ public class View {
                             break;
                         case 6:
                             routeController.addNewRoute();
+                            break;
+                        case 7:
+                            trainController.delete();
+                            break;
+                        case 8:
+                            stationController.delete();
+                            break;
+                        case 9:
+                            routeController.delete();
                             break;
                     }
                     break;

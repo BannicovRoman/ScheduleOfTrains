@@ -335,6 +335,61 @@ public class JsonRoute {
 
       JsonRoute jsonRoute = new JsonRoute();
       jsonRoute.objectToJson(routeList);
+   }
 
+   public void deleteRoute(){
+
+      Scanner sc = new Scanner(System.in);
+      int idDelete;
+      Gson gson = new Gson();
+      JsonArray  jsonArray = new JsonArray();
+
+      try {
+
+         BufferedReader br = new BufferedReader(new FileReader("routes.json"));
+
+         jsonArray = gson.fromJson(br, JsonArray.class);
+
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+
+      System.out.println("Введите название id маршрута для удаления: ");
+      idDelete = sc.nextInt();
+
+      for(int i = 0; i < jsonArray.size(); i++) {
+         int id = jsonArray.get(i).getAsJsonObject().get("id").getAsInt();
+         if(id == idDelete){
+            jsonArray.remove(i);
+         }
+      }
+      Gson gsonWr = new GsonBuilder().setPrettyPrinting().create();
+
+      String jsonString = gsonWr.toJson(jsonArray);
+
+      BufferedWriter bufferedWriter = null;
+      try {
+
+         File file = new File("routes.json");
+         if(!file.exists()){
+            file.createNewFile();
+         }
+
+         FileWriter fileWriter = new FileWriter(file);
+         bufferedWriter = new BufferedWriter(fileWriter);
+         bufferedWriter.write(jsonString);
+
+
+      } catch (IOException e) {
+         e.printStackTrace();
+      } finally {
+         try {
+            if (bufferedWriter != null){
+               bufferedWriter.close();
+            }
+         } catch (IOException ex) {
+            ex.printStackTrace();
+         }
+      }
    }
-   }
+}

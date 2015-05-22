@@ -213,21 +213,18 @@ public class JsonTrain{
         jsonTrain.objectToJson(trainList);
     }
 
-    public void delete(){    // нужно доделать!
+    public void deleteTrain(){
 
         Scanner sc = new Scanner(System.in);
         String nameDelete;
         Gson gson = new Gson();
-        List<Train> trainList = new LinkedList<>();
-        //JsonArray  jsonArray = new JsonArray();
-        //JsonObject jsonObject = new JsonObject();
-        //Train train = new Train();
+        JsonArray  jsonArray = new JsonArray();
 
         try {
 
             BufferedReader br = new BufferedReader(new FileReader("trains.json"));
 
-            trainList = gson.fromJson(br, List.class);
+            jsonArray = gson.fromJson(br, JsonArray.class);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -236,13 +233,39 @@ public class JsonTrain{
         System.out.println("Введите название поезда для удаления: ");
         nameDelete = sc.nextLine();
 
-        for(int i = 0; i < trainList.size(); i++){
-            String name = trainList.get(i).getName();
+        for(int i = 0; i < jsonArray.size(); i++) {
+            String name = jsonArray.get(i).getAsJsonObject().get("name").getAsString();
             if(name.equals(nameDelete)){
-                trainList.remove(i);
+                jsonArray.remove(i);
             }
         }
-        JsonTrain jsonTrain = new JsonTrain();
-        jsonTrain.objectToJson(trainList);
+        Gson gsonWr = new GsonBuilder().setPrettyPrinting().create();
+
+        String jsonString = gsonWr.toJson(jsonArray);
+
+        BufferedWriter bufferedWriter = null;
+        try {
+
+            File file = new File("trains.json");
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
+            FileWriter fileWriter = new FileWriter(file);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(jsonString);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bufferedWriter != null){
+                    bufferedWriter.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }
